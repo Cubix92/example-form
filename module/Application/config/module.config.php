@@ -19,8 +19,8 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => Controller\StatisticController::class,
-                        'action'     => 'show',
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'index',
                     ],
                 ],
             ],
@@ -28,15 +28,12 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\StatisticController::class => Factory\StatisticControllerFactory::class
+            Controller\IndexController::class => Factory\IndexControllerFactory::class
         ],
     ],
-    'service_manager' => [
+    'form_elements' => [
         'factories' => [
-            Service\StatisticService::class => Factory\StatisticServiceFactory::class,
-            Service\Statistic\StatisticParser::class => InvokableFactory::class,
-            Service\CompatibilityService::class => InvokableFactory::class,
-            Service\AgesService::class => InvokableFactory::class
+            Form\PersonForm::class => Factory\PersonFormFactory::class,
         ]
     ],
     'view_manager' => [
@@ -60,11 +57,11 @@ return [
             __NAMESPACE__ . '_driver' => [
                 'class' => AnnotationDriver::class,
                 'cache' => 'array',
-                'paths' => [__DIR__ . '/../src/Model']
+                'paths' => [__DIR__ . '/../src/Entity']
             ],
             'orm_default' => [
                 'drivers' => [
-                    __NAMESPACE__ . '\Model' => __NAMESPACE__ . '_driver'
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
                 ]
             ]
         ]

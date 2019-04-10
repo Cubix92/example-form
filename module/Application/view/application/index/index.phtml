@@ -1,0 +1,16 @@
+<?php $this->form->prepare(); ?>
+<?= $this->form()->openTag($this->form); ?>
+
+<?= $this->formHidden($this->form->get('id')) ?>
+
+<?= $this->formElement($this->form->get('name')->setAttribute('placeholder', 'Your name')) ?>
+<?= $this->formElementErrors($this->form->get('name')) ?>
+
+<?= $this->formElement($this->form->get('age')->setAttribute('placeholder', 'Your age')) ?>
+<?= $this->formElementErrors($this->form->get('age')) ?>
+
+<?= $this->formHidden($this->form->get('csrf')) ?>
+
+<?= $this->formSubmit($this->form->get('submit')->setValue('Send')) ?>
+
+<?= $this->form()->closeTag(); ?>
